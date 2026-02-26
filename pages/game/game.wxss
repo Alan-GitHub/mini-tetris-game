@@ -1,0 +1,250 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #0a0a0a;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* Header */
+.game-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20rpx;
+}
+
+.info-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16rpx;
+  padding: 20rpx 40rpx;
+  text-align: center;
+  min-width: 120rpx;
+}
+
+.info-label {
+  font-size: 24rpx;
+  color: #888;
+  margin-bottom: 8rpx;
+}
+
+.info-value {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #00d9ff;
+}
+
+/* Game Area */
+.game-area {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20rpx;
+  flex: 1;
+}
+
+.canvas-wrapper {
+  background: #1a1a1a;
+  border-radius: 16rpx;
+  padding: 10rpx;
+  border: 4rpx solid #333;
+}
+
+.game-canvas {
+  width: 300rpx;
+  height: 600rpx;
+}
+
+/* Next Piece */
+.next-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16rpx;
+  padding: 20rpx;
+  width: 140rpx;
+}
+
+.next-label {
+  font-size: 24rpx;
+  color: #888;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.next-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.preview-row {
+  display: flex;
+  gap: 4rpx;
+}
+
+.preview-cell {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 4rpx;
+}
+
+.preview-cell.active {
+  box-shadow: 0 0 10rpx rgba(255, 255, 255, 0.3);
+}
+
+/* Controls */
+.controls {
+  margin-top: 20rpx;
+}
+
+.control-row {
+  display: flex;
+  justify-content: center;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.control-btn {
+  width: 120rpx;
+  height: 120rpx;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.control-btn::after {
+  border: none;
+}
+
+.control-btn:active {
+  background: rgba(0, 217, 255, 0.3);
+}
+
+.rotate-btn {
+  width: 160rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  background: linear-gradient(135deg, #a000f0 0%, #7000aa 100%);
+}
+
+.down-btn {
+  background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+}
+
+.drop-btn {
+  width: 300rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  background: linear-gradient(135deg, #ff006e 0%, #cc0055 100%);
+}
+
+/* Top Buttons */
+.top-buttons {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  display: flex;
+  gap: 16rpx;
+}
+
+.top-btn {
+  width: 80rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 36rpx;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-btn::after {
+  border: none;
+}
+
+.top-btn:active {
+  background: rgba(0, 217, 255, 0.3);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 32rpx;
+  padding: 60rpx;
+  text-align: center;
+  border: 2rpx solid rgba(0, 217, 255, 0.3);
+  box-shadow: 0 0 60rpx rgba(0, 217, 255, 0.2);
+}
+
+.modal-title {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #00d9ff;
+  margin-bottom: 30rpx;
+}
+
+.modal-score {
+  font-size: 40rpx;
+  color: #ffd700;
+  margin-bottom: 50rpx;
+}
+
+.modal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.modal-btn {
+  width: 300rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-btn::after {
+  border: none;
+}
+
+.restart-btn {
+  background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+}
+
+.back-btn {
+  background: transparent;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+}

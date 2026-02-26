@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="title">俄罗斯方块</view>
+  <view class="subtitle">TETRIS</view>
+  
+  <view class="high-score" wx:if="{{highScore > 0}}">
+    最高分: {{highScore}}
+  </view>
+  
+  <view class="menu">
+    <button class="start-btn" bindtap="startGame">开始游戏</button>
+    <button class="share-btn" open-type="share">分享给好友</button>
+  </view>
+  
+  <view class="instructions">
+    <view class="instruction-title">游戏说明</view>
+    <view class="instruction-item">← → 左右移动</view>
+    <view class="instruction-item">↓ 加速下落</view>
+    <view class="instruction-item">↑ 旋转方块</view>
+  </view>
+</view>

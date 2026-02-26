@@ -1,0 +1,81 @@
+.container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.title {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #00d9ff;
+  text-shadow: 0 0 20rpx rgba(0, 217, 255, 0.5);
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  font-size: 40rpx;
+  color: #ff006e;
+  letter-spacing: 10rpx;
+  margin-bottom: 60rpx;
+}
+
+.high-score {
+  font-size: 36rpx;
+  color: #ffd700;
+  margin-bottom: 40rpx;
+  padding: 20rpx 40rpx;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 20rpx;
+  border: 2rpx solid rgba(255, 215, 0, 0.3);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+  width: 80%;
+  max-width: 400rpx;
+}
+
+.start-btn {
+  background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+  color: white;
+  font-size: 36rpx;
+  font-weight: bold;
+  border: none;
+  border-radius: 50rpx;
+  padding: 30rpx 60rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 217, 255, 0.3);
+}
+
+.start-btn::after {
+  border: none;
+}
+
+.share-btn {
+  background: transparent;
+  color: #00d9ff;
+  font-size: 32rpx;
+  border: 2rpx solid #00d9ff;
+  border-radius: 50rpx;
+  padding: 25rpx 50rpx;
+}
+
+.share-btn::after {
+  border: none;
+}
+
+.instructions {
+  margin-top: 80rpx;
+  text-align: center;
+}
+
+.instruction-title {
+  font-size: 32rpx;
+  color: #888;
+  margin-bottom: 20rpx;
+}
+
+.instruction-item {
+  font-size: 28rpx;
+  color: #aaa;
+  margin: 10rpx 0;
+}
