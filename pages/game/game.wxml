@@ -1,84 +1,124 @@
-<view class="game-container">
-  <!-- Header Info -->
-  <view class="game-header">
-    <view class="info-box">
-      <view class="info-label">分数</view>
-      <view class="info-value">{{score}}</view>
-    </view>
-    <view class="info-box">
-      <view class="info-label">等级</view>
-      <view class="info-value">{{level}}</view>
-    </view>
-    <view class="info-box">
-      <view class="info-label">行数</view>
-      <view class="info-value">{{lines}}</view>
-    </view>
-  </view>
+<view class="game-container retro">
+  <!-- Title -->
+  <view class="game-title">俄罗斯方块</view>
 
-  <!-- Game Area -->
-  <view class="game-area">
-    <!-- Canvas -->
-    <view class="canvas-wrapper">
-      <canvas 
-        type="2d" 
-        id="gameCanvas" 
-        class="game-canvas"
-        bindtouchstart="onTouchStart"
-        bindtouchend="onTouchEnd"
-      ></canvas>
-    </view>
-    
-    <!-- Next Piece Preview -->
-    <view class="next-box">
-      <view class="next-label">下一个</view>
-      <view class="next-preview" wx:if="{{nextPiece}}">
-        <view 
-          class="preview-row" 
-          wx:for="{{nextPiece.shape}}" 
-          wx:for-item="row" 
-          wx:key="index"
-        >
-          <view 
-            class="preview-cell {{cell ? 'active' : ''}}" 
-            wx:for="{{row}}" 
-            wx:for-item="cell" 
-            wx:key="index"
-            style="background-color: {{cell ? nextPiece.color : 'transparent'}}"
-          ></view>
+  <!-- Main Screen Area -->
+  <view class="screen-frame">
+    <view class="screen-inner">
+      <!-- Game Board -->
+      <view class="game-board">
+        <canvas 
+          type="2d" 
+          id="gameCanvas" 
+          class="game-canvas"
+          bindtouchstart="onTouchStart"
+          bindtouchend="onTouchEnd"
+        ></canvas>
+      </view>
+      
+      <!-- Info Panel -->
+      <view class="info-panel">
+        <view class="info-section">
+          <view class="info-label">得分</view>
+          <view class="info-value">{{score}}</view>
+        </view>
+        <view class="info-section">
+          <view class="info-label">消除行</view>
+          <view class="info-value">{{lines}}</view>
+        </view>
+        <view class="info-section">
+          <view class="info-label">级别</view>
+          <view class="info-value">{{level}}</view>
+        </view>
+        <view class="info-section next-section">
+          <view class="info-label">下一个</view>
+          <view class="next-preview" wx:if="{{nextPiece}}">
+            <view 
+              class="preview-row" 
+              wx:for="{{nextPiece.shape}}" 
+              wx:for-item="row" 
+              wx:key="index"
+            >
+              <view 
+                class="preview-cell {{cell ? 'active' : ''}}" 
+                wx:for="{{row}}" 
+                wx:for-item="cell" 
+                wx:key="index"
+                style="background-color: {{cell ? nextPiece.color : 'transparent'}}"
+              ></view>
+            </view>
+          </view>
+        </view>
+        <!-- Sound Toggle -->
+        <view class="sound-toggle" bindtap="toggleSound">
+          <text class="sound-icon">{{soundEnabled ? '🔊' : '🔇'}}</text>
         </view>
       </view>
     </view>
   </view>
 
-  <!-- Controls -->
-  <view class="controls">
-    <view class="control-row">
-      <button class="control-btn rotate-btn" bindtap="onRotate">旋转</button>
+  <!-- Controls Area -->
+  <view class="controls-area">
+    <!-- Top Row: Function Buttons -->
+    <view class="function-buttons">
+      <view class="func-btn-wrapper">
+        <button class="func-btn pause" bindtap="onPause"></button>
+        <text class="func-label">暂停(P)</text>
+      </view>
+      <view class="func-btn-wrapper">
+        <button class="func-btn sound" bindtap="toggleSound"></button>
+        <text class="func-label">音效(S)</text>
+      </view>
+      <view class="func-btn-wrapper">
+        <button class="func-btn restart" bindtap="onRestart"></button>
+        <text class="func-label">重玩(R)</text>
+      </view>
     </view>
-    <view class="control-row">
-      <button class="control-btn" bindtap="onLeft">←</button>
-      <button 
-        class="control-btn down-btn" 
-        bindtap="onDown"
-        bindlongpress="onDownLongPress"
-        bindtouchend="onDownTouchEnd"
-        bindtouchcancel="onDownTouchEnd"
-      >↓</button>
-      <button class="control-btn" bindtap="onRight">→</button>
-    </view>
-    <view class="control-row">
-      <button class="control-btn drop-btn" bindtap="onDrop">快速下落</button>
-    </view>
-  </view>
 
-  <!-- Top Buttons -->
-  <view class="top-buttons">
-    <button class="top-btn sound-btn" bindtap="toggleSound">
-      {{soundEnabled ? '🔊' : '🔇'}}
-    </button>
-    <button class="top-btn pause-btn" bindtap="onPause">
-      {{paused ? '▶' : '⏸'}}
-    </button>
+    <!-- Main Controls -->
+    <view class="main-controls">
+      <!-- Drop Button (Left) -->
+      <view class="drop-area">
+        <text class="btn-label-top">掉落\n(SPACE)</text>
+        <button class="big-btn drop" bindtap="onDrop"></button>
+      </view>
+
+      <!-- Direction Buttons (Right) -->
+      <view class="direction-area">
+        <view class="dir-row top">
+          <text class="dir-label-top">旋转</text>
+          <button class="dir-btn rotate" bindtap="onRotate"></button>
+        </view>
+        <view class="dir-row middle">
+          <view class="dir-btn-wrapper">
+            <text class="dir-label-top">左移</text>
+            <button class="dir-btn left" bindtap="onLeft"></button>
+          </view>
+          <view class="dir-center">
+            <view class="arrow-cross">
+              <view class="arrow up"></view>
+              <view class="arrow right"></view>
+              <view class="arrow down"></view>
+              <view class="arrow left"></view>
+            </view>
+          </view>
+          <view class="dir-btn-wrapper">
+            <text class="dir-label-top">右移</text>
+            <button class="dir-btn right" bindtap="onRight"></button>
+          </view>
+        </view>
+        <view class="dir-row bottom">
+          <text class="dir-label-top">下移</text>
+          <button 
+            class="dir-btn down" 
+            bindtap="onDown"
+            bindlongpress="onDownLongPress"
+            bindtouchend="onDownTouchEnd"
+            bindtouchcancel="onDownTouchEnd"
+          ></button>
+        </view>
+      </view>
+    </view>
   </view>
 
   <!-- Game Over Modal -->

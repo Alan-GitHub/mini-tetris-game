@@ -231,8 +231,12 @@ Page({
     this.grid = Array(ROWS).fill(null).map(() => Array(COLS).fill(0))
     
     // Get canvas context
-    const query = wx.createSelectorQuery()
+    const query = wx.createSelectorQuery().in(this)
     query.select('#gameCanvas').fields({ node: true, size: true }).exec((res) => {
+      if (!res[0] || !res[0].node) {
+        console.error('Canvas not found')
+        return
+      }
       this.canvas = res[0].node
       this.ctx = this.canvas.getContext('2d')
       
@@ -262,6 +266,14 @@ Page({
     
     this.lastDropTime = Date.now()
     this.isRunning = true
+    
+    // Draw initial state immediately
+    this.draw()
+    
+    // Start game loop
+    if (this.gameLoop) {
+      clearInterval(this.gameLoop)
+    }
     this.gameLoop = setInterval(this.gameUpdate.bind(this), 16)
   },
 
