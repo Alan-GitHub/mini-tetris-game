@@ -23,6 +23,8 @@
   border-radius: 20rpx;
   padding: 30rpx;
   box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .screen-inner {
@@ -38,6 +40,8 @@
   background: #9bb89b;
   border: 2rpx solid #666;
   border-radius: 4rpx;
+  position: relative;
+  z-index: 1;
 }
 
 .game-canvas {
@@ -45,6 +49,8 @@
   height: 600rpx;
   display: block;
   background: #0a0a0a;
+  position: relative;
+  z-index: 1;
 }
 
 /* Info Panel */
@@ -398,16 +404,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .modal-content {
   background: #f4d03f;
   border-radius: 20rpx;
   padding: 60rpx;
-  min-width: 500rpx;
+  width: calc(100% - 60rpx);
+  max-width: 600rpx;
+  margin: 0 30rpx;
   text-align: center;
   border: 8rpx solid #2c2c2c;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1001;
 }
 
 .modal-title {

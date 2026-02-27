@@ -98,7 +98,7 @@ Page({
     this.bgm = wx.createInnerAudioContext()
     this.bgm.src = '/audio/bgm.mp3'
     this.bgm.loop = true
-    this.bgm.volume = 0.5
+    this.bgm.volume = 0.2
 
     // Load sound effects from single file (like gameA)
     this.loadAudioClips()
